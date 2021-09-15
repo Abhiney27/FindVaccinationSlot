@@ -7,5 +7,4 @@ RUN pip3 install -r /home/requirements.txt
 COPY CowinApp App
 WORKDIR App
 ENTRYPOINT ["python3", "app.py"]
-EXPOSE 3000 1234
-                    
+EXPOSE 2708  1234                    
