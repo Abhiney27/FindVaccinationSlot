@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <title>Home</title>
+        <script src="Validate.js"></script>
+        <h1><center>Vaccine Availabilty</center></h1>
+        <br>
+        <br>
+    </head>
+<center>
+<form method="POST" name = "User" action="/FindCenter" onsubmit="return validateForm()">
+    <input type="search" name="pincode" placeholder="Enter Pincode eg: 110077" style="background-color: white; width: 300px; height: 50px; border-radius: 50px; border-color:teal; font-size: medium; text-align: center; text-decoration: blue;">
+    <input type="search" name="date" placeholder="Enter Date eg: mm-dd-yyyy" style="background-color: white; border-radius: 50px; width: 300px; height: 50px; border-color: teal; font-size: medium; text-align: center; text-decoration: blue;">
+    <button type="submit" onclick="info_show()" style="background-color:teal; border-radius: 30px; width: 100px; height: 30px;">Search</button>
+</form>
+<a href="https://selfregistration.cowin.gov.in/"><button type="submit" style="background-color: yellow; border-radius: 20px; position: absolute; top: 10px; right: 10px;">Book your Slot</button></a>
+<form action="/Alert">
+<button type="submit" style="background-color: yellow; border-radius: 20px; position: absolute; top: 10px; left: 10px;">Set Alert</button>
+</form>
+</center>
+<br>
+    <table style="color: teal ; background-color: white; font-size: medium; font-weight: 500;" class="table table-bordered table-hover ">
+            <thead style="text-align: center;" class="thead-dark">
+              <tr>
+                <!-- <th scope="col">#</th> -->
+                <th scope="col">Center Name</th>
+                <th scope="col">Vaccine</th>
+                <th scope="col">Availabilty</th>
+                <th scope="col">Address</th>
+                <th scope="col">Fee Type</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for i in out['sessions'] %}
+              <tr>
+                <!-- <th scope="row">{{ loop.index }}</th> -->
+                <td >{{ i['name'] }}</td>
+                <td >{{ i['vaccine'] }}</td>
+                <td style="text-align: center;">{{ i['available_capacity'] }}</td>
+                <td>{{ i['address'] }}</td>
+                <td>{{ i['fee_type'] }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <br>
+        <center>
+      <div id= "info" style="color:blueviolet;"><h5>So, why are you waiting go and book your vaccination slot</h5></div>
+    </center>    
+</html>
+
+<script>
+    function validateForm() {
+        var pincode = document.forms["User"]["pincode"].value;
+        var date = document.forms["User"]["date"].value
+        if(pincode == "" && date == ""){
+            alert("Both Pincode and date must be filled out");
+            return false;
+        }
+        else if(pincode == ""){
+            alert("Please enter the Pincode");
+            return false;
+        }
+        else if(date == ""){
+            alert("Please enter the date");
+            return false;
+        }
+    }
+    function info_show() {
+        document.getElementById("info").innerHTML = "So, Why are you Waiting go and book your Vaccination slot";
+        // document.getElementById("main").style.marginLeft = "120px";
+    }
+</script>
