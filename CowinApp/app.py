@@ -2,7 +2,6 @@ from logging import error
 from flask import Flask , render_template, request
 import requests
 from datetime import date, datetime
-import alert_mail_sender
 from pymongo import MongoClient
 app = Flask("CowinApp")
 hostname = "0.0.0.0"
