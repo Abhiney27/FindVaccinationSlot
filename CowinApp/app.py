@@ -5,7 +5,7 @@ from datetime import date, datetime
 from pymongo import MongoClient
 app = Flask("CowinApp")
 hostname = "0.0.0.0"
-port = "1234"
+port = "2708"
 
 mongo_sever_url = "mongodb://127.0.0.1:27017/?readPreference=primary&appname=MongoDB%20Compass&ssl=false"
 client = MongoClient(mongo_sever_url)
