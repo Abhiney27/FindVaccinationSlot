@@ -57,7 +57,7 @@ def send_alert_mail():
             return "you have already set the alert"
 
         client[db][collection].insert({"email" : email , "pincode": pincode, "vaccine_type" : vaccine, "fee_type" : fee, "RegisterTime" : current_time})
-        alert_mail_sender.email_sender(email , "Abhiney", pincode, vaccine, fee)
+        alert_mail_sender.email_sender(email , pincode, vaccine, fee)
      
     return render_template("Alert.html" , alert = "You have set the alert" +"\n" + "We will update you when the slot is available(as per your preference) for you")
     
