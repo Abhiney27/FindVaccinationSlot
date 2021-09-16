@@ -2,9 +2,14 @@ from logging import error
 from flask import Flask , render_template, request
 import requests
 from datetime import datetime
+import pytz
 from pymongo import MongoClient
 import alert_mail_sender
+
+IST = pytz.timezone('Asia/Kolkata')
+
 app = Flask("CowinApp")
+
 hostname = "0.0.0.0"
 port = "2708"
 
