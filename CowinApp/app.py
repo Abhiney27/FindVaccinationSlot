@@ -1,13 +1,14 @@
 from logging import error
 from flask import Flask , render_template, request
 import requests
-from datetime import date, datetime
+from datetime import datetime
 from pymongo import MongoClient
+import alert_mail_sender
 app = Flask("CowinApp")
 hostname = "0.0.0.0"
 port = "2708"
 
-mongo_sever_url = "mongodb://127.0.0.1:27017/?readPreference=primary&appname=MongoDB%20Compass&ssl=false"
+mongo_sever_url = "mongodb+srv://Abhiney:95958678@cluster0.nkzew.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 client = MongoClient(mongo_sever_url)
 
 db = "vaccine"
@@ -43,14 +44,17 @@ def send_alert_mail():
         pincode = request.form.get("pincode")
         vaccine = request.form.get("vaccine")
         fee = request.form.get("fee")
-        current_date = datetime.now(IST).strftime('%d-%m-%Y')
         current_time = datetime.now(IST).strftime('%Y-%m-%d %H:%M:%S')
-        # date = str(current_date.day) + "-" + str(current_date.month) + "-" + str(current_date.year)
         vaccine = vaccine.upper()
         fee = fee.replace(fee[0] , fee[0].upper())
+        user_email = client[db][collection].find_one({"email" : email})
+        if user_email:
+            return "you have already set the alert"
+
         client[db][collection].insert({"email" : email , "pincode": pincode, "vaccine_type" : vaccine, "fee_type" : fee, "RegisterTime" : current_time})
+        alert_mail_sender.email_sender(email , "Abhiney", pincode, vaccine, fee)
      
     return render_template("Alert.html" , alert = "You have set the alert" +"\n" + "We will update you when the slot is available(as per your preference) for you")
-    # return render_template("Alert.html")
+    
 
 app.run(debug=True , host=hostname , port=port)
