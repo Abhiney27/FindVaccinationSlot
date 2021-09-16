@@ -12,13 +12,13 @@
     </head>
 <center>
 <form method="POST" name = "User" action="/FindCenter" onsubmit="return validateForm()">
-    <input type="search" name="pincode" placeholder="Enter Pincode eg: 110077" style="background-color: white; width: 300px; height: 50px; border-radius: 50px; border-color:teal; font-size: medium; text-align: center; text-decoration: blue;">
-    <input type="search" name="date" placeholder="Enter Date eg: mm-dd-yyyy" style="background-color: white; border-radius: 50px; width: 300px; height: 50px; border-color: teal; font-size: medium; text-align: center; text-decoration: blue;">
-    <button type="submit" onclick="info_show()" style="background-color:teal; border-radius: 30px; width: 100px; height: 30px;">Search</button>
+    <input class="btn" type="search" name="pincode" placeholder="Enter Pincode eg: 110077" style="background-color: white; width: 300px; height: 50px; border-radius: 50px; border-color:teal; font-size: medium; text-align: center; border-width: 2px; text-decoration: blue;">
+    <input class="btn" type="search" name="date" placeholder="Enter Date eg: mm-dd-yyyy" style="background-color: white; border-radius: 50px; width: 300px; height: 50px; border-color: teal; font-size: medium; text-align: center; border-width: 2px;">
+    <button type="submit" class="btn btn-primary" onclick="info_show()" style="background-color:teal; border-radius: 30px; width: 100px; height: 40px; align-items: center; border-color: black; border-width: 2px;"> Search</button>
 </form>
-<a href="https://selfregistration.cowin.gov.in/"><button type="submit" style="background-color: yellow; border-radius: 20px; position: absolute; top: 10px; right: 10px;">Book your Slot</button></a>
+<a href="https://selfregistration.cowin.gov.in/"><button type="submit" class="btn" style="background-color: yellow; border-radius: 20px; position: absolute; top: 10px; right: 10px; border-color: rgba(0, 0, 0, 0.753); border-width: 2px; height: 30x;">Book your Slot</button></a>
 <form action="/Alert">
-<button type="submit" style="background-color: yellow; border-radius: 20px; position: absolute; top: 10px; left: 10px;">Set Alert</button>
+<button type="submit" class="btn" style="background-color: yellow; border-radius: 20px; width: 85px; height: 36px; position: absolute; top: 10px; left: 10px; border-color: rgba(0, 0, 0, 0.753); border-width: 2px;">Set Alert</button>
 </form>
 </center>
 <br>
