@@ -13,8 +13,8 @@ app = Flask("CowinApp")
 hostname = "0.0.0.0"
 port = "2708"
 
-mongo_sever_url = "mongodb+srv://Abhiney:95958678@cluster0.nkzew.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
-client = MongoClient(mongo_sever_url)
+#mongo_sever_url = "mongodb+srv://Abhiney:95958678@cluster0.nkzew.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+#client = MongoClient(mongo_sever_url)
 
 db = "vaccine"
 collection = "users"
